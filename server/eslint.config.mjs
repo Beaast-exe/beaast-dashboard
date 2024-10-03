@@ -17,7 +17,7 @@ export default [
 		},
 		rules: {
 			'indent': ['error', 'tab'],
-			'@stylistic/js/indent': ['error', 2],
+			'@stylistic/js/indent': ['error', 'tab'],
 			'no-undef': 'off',
 			'quotes': ['error', 'single'],
 			'semi': ['error', 'always']

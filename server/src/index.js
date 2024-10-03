@@ -1,13 +1,11 @@
 const express = require('express');
+const routes = require('./routes');
+
 const app = express();
 
-const cors = require('cors');
+const { port } = require('./config/server');
 
-const { port, corsPort } = require('./config').server;
-const corsOptions = { origin: `http://localhost:${corsPort}` };
-
-app.use(cors(corsOptions));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(routes);
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
