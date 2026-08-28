@@ -1,18 +1,18 @@
 services:
-  database:
-    image: postgres:13
-    environment:
-      POSTGRES_USER: ${DATABASE_USER}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-      POSTGRES_DB: ${DATABASE_DB}
-    ports:
-      - "${DATABASE_PORT}:5432"
+    database:
+        image: postgres:16
+        environment:
+            POSTGRES_USER: ${DATABASE_USER}
+            POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+            POSTGRES_DB: ${DATABASE_DB}
+        ports:
+            - "${DATABASE_PORT}:5432"
 
-  backend:
-    build: ./backend
-    ports:
-      - "5000:3000"
-    environment:
-      - DATABASE_URL=postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@database:${DATABASE_PORT}/${DATABASE_DB}
-    depends_on:
-      - database
+    backend:
+        build: ./backend
+        ports:
+            - "5000:3000"
+        environment:
+            - DATABASE_URL=postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@database:${DATABASE_PORT}/${DATABASE_DB}
+        depends_on:
+            - database
